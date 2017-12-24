@@ -1,0 +1,25 @@
+<!-- se esta pansando el array de serverElements cada iteracion a app-server-element -->
+
+<div class="container">
+  <app-cock
+    (serverCreated)="onServerAdded($event)"
+    (blueprintData)="onBlueprintAdded($event)"
+  ></app-cock>
+  <hr>
+  <div class="row">
+    <div class="col-lg-12">
+      <!-- el element recibe a cada elemento que se manda -->
+      <app-server-element
+        *ngFor="let serverElement of  serverElements"
+        [element]="serverElement"
+      >
+      
+      <p #content>
+        <strong *ngIf="serverElement.type === 'server'" style="color:red" >{{ serverElement.content }}</strong>
+        <em *ngIf="serverElement.type === 'blueprint'" >{{ serverElement.content }}</em>
+      </p>
+
+    </app-server-element>
+    </div>
+  </div>
+</div>
